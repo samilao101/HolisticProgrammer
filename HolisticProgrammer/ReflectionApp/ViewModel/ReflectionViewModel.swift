@@ -35,8 +35,11 @@ class ReflectionViewModel : ObservableObject {
     @Published var distanceFromStart = CLLocationDistance()
     @Published var state: AppState = .readyToStart
     
-    var limit: Double = 5.00
+    //distance limit that activates the counter
+    var limit: Double = 100.00
+    //how long in seconds the timer goes
     var seconds: Double = 1500
+    //Counter that is reduce by one second after the person is walking away.
     var counter: Int = 1500
     
     @Published var percentFromStart: CGFloat = 0.0
@@ -68,11 +71,13 @@ class ReflectionViewModel : ObservableObject {
         
     }
     
+    //Converts the stored dates reflections were done, converts them to an array of dates as string, then creates a range of the first and last day reflections were done,to see which days were missed, to give the user either blue balls the days they reflected and red balls the days they missed.
+    
     func convertReflectionsToBalls() {
         
         
         guard var first = reflections.first?.dateCompleted else { return }
-        guard let last = reflections.last?.dateCompleted else { return }
+        let last = Date()
         
         while first <= last {
             dateRange.append(first)
@@ -94,6 +99,7 @@ class ReflectionViewModel : ObservableObject {
                 }
 
             } else {
+                //days missed
                 balls.append(.red)
             }
             
@@ -103,11 +109,9 @@ class ReflectionViewModel : ObservableObject {
         loadBalls()
     }
     
-    
+    //Sends the appropiate balls to the game scene to create and post to screen
     func loadBalls() {
         
-    
-
         
         for i in balls.indices {
          
