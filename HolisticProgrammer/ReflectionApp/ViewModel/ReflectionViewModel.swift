@@ -77,7 +77,7 @@ class ReflectionViewModel : ObservableObject {
         
         
         guard var first = reflections.first?.dateCompleted else { return }
-        let last = Calendar.current.date(byAdding: .day, value: 3, to: Date())!
+        let last = Date()
         
         while first <= last {
             dateRange.append(first)
