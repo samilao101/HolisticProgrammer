@@ -22,8 +22,8 @@ enum AppState {
 
 enum BallTypes {
     
-    case blue
-    case red
+    case blue  //Accomplished a reflection
+    case red   // Missed a day
     
 }
 
@@ -77,7 +77,7 @@ class ReflectionViewModel : ObservableObject {
         
         
         guard var first = reflections.first?.dateCompleted else { return }
-        let last = Date()
+        let last = Calendar.current.date(byAdding: .day, value: 3, to: Date())!
         
         while first <= last {
             dateRange.append(first)
