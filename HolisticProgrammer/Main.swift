@@ -13,7 +13,7 @@ struct Main: View {
     
     var body: some View {
        
-        Reflection(storage: storage)
+        WalkTimerView(walk: storage)
         
     }
 }

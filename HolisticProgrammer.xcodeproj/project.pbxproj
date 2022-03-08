@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACC13F8627D7B82900B9E7A5 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC13F8527D7B82900B9E7A5 /* Foundation+Extensions.swift */; };
+		ACC13F8827D7C31300B9E7A5 /* WalkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC13F8727D7C31300B9E7A5 /* WalkButton.swift */; };
 		E83FEEEA27D0C8AE001F0E54 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FEEE927D0C8AE001F0E54 /* GameScene.swift */; };
 		E856FA2527CE434500EEBDEA /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856FA2427CE434500EEBDEA /* ButtonView.swift */; };
 		E856FA2727CE44AA00EEBDEA /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856FA2627CE44AA00EEBDEA /* ProgressCircle.swift */; };
@@ -18,13 +20,15 @@
 		E857518227BF929800F0B2AB /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E857518127BF929800F0B2AB /* Main.swift */; };
 		E857518427BF929A00F0B2AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E857518327BF929A00F0B2AB /* Assets.xcassets */; };
 		E857518727BF929A00F0B2AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E857518627BF929A00F0B2AB /* Preview Assets.xcassets */; };
-		E857519427BF960800F0B2AB /* Reflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E857519327BF960800F0B2AB /* Reflection.swift */; };
+		E857519427BF960800F0B2AB /* WalkTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E857519327BF960800F0B2AB /* WalkTimerView.swift */; };
 		E857519627BF967200F0B2AB /* ReflectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E857519527BF967200F0B2AB /* ReflectionViewModel.swift */; };
 		E857519927BF99DB00F0B2AB /* ReflectionLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E857519827BF99DB00F0B2AB /* ReflectionLocationManager.swift */; };
 		E85D323D27D3C48E00C2760D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D323C27D3C48E00C2760D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ACC13F8527D7B82900B9E7A5 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
+		ACC13F8727D7C31300B9E7A5 /* WalkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkButton.swift; sourceTree = "<group>"; };
 		E83FEEE927D0C8AE001F0E54 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		E856FA2427CE434500EEBDEA /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		E856FA2627CE44AA00EEBDEA /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
@@ -37,7 +41,7 @@
 		E857518127BF929800F0B2AB /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		E857518327BF929A00F0B2AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E857518627BF929A00F0B2AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E857519327BF960800F0B2AB /* Reflection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reflection.swift; sourceTree = "<group>"; };
+		E857519327BF960800F0B2AB /* WalkTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkTimerView.swift; sourceTree = "<group>"; };
 		E857519527BF967200F0B2AB /* ReflectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionViewModel.swift; sourceTree = "<group>"; };
 		E857519827BF99DB00F0B2AB /* ReflectionLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionLocationManager.swift; sourceTree = "<group>"; };
 		E85D323C27D3C48E00C2760D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -54,11 +58,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ACC13F8427D7B7BC00B9E7A5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				ACC13F8527D7B82900B9E7A5 /* Foundation+Extensions.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		E856FA2A27CF744100EEBDEA /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				E83FEEE927D0C8AE001F0E54 /* GameScene.swift */,
-				E857519327BF960800F0B2AB /* Reflection.swift */,
+				E857519327BF960800F0B2AB /* WalkTimerView.swift */,
+				ACC13F8727D7C31300B9E7A5 /* WalkButton.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -113,6 +126,7 @@
 		E857518F27BF948600F0B2AB /* ReflectionApp */ = {
 			isa = PBXGroup;
 			children = (
+				ACC13F8427D7B7BC00B9E7A5 /* Support */,
 				E85D323B27D3C47B00C2760D /* Contants */,
 				E857519727BF970E00F0B2AB /* Services */,
 				E857519227BF94AD00F0B2AB /* ViewModel */,
@@ -230,13 +244,15 @@
 				E857518027BF929800F0B2AB /* HolisticProgrammerApp.swift in Sources */,
 				E856FA3027CF75EC00EEBDEA /* ReflectionsContainer.xcdatamodeld in Sources */,
 				E856FA2527CE434500EEBDEA /* ButtonView.swift in Sources */,
+				ACC13F8827D7C31300B9E7A5 /* WalkButton.swift in Sources */,
+				ACC13F8627D7B82900B9E7A5 /* Foundation+Extensions.swift in Sources */,
 				E856FA2D27CF753C00EEBDEA /* StorageViewModel.swift in Sources */,
 				E856FA3227CF8C2D00EEBDEA /* ReflectionView.swift in Sources */,
 				E83FEEEA27D0C8AE001F0E54 /* GameScene.swift in Sources */,
 				E85D323D27D3C48E00C2760D /* Constants.swift in Sources */,
 				E857519927BF99DB00F0B2AB /* ReflectionLocationManager.swift in Sources */,
 				E856FA2727CE44AA00EEBDEA /* ProgressCircle.swift in Sources */,
-				E857519427BF960800F0B2AB /* Reflection.swift in Sources */,
+				E857519427BF960800F0B2AB /* WalkTimerView.swift in Sources */,
 				E856FA2927CE45B600EEBDEA /* TimerView.swift in Sources */,
 				E857519627BF967200F0B2AB /* ReflectionViewModel.swift in Sources */,
 			);

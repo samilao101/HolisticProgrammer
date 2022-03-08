@@ -15,7 +15,7 @@ struct TimerView: View {
         HStack{
             Text(String(counter % 3600 / 60))
                 .foregroundColor(.white)
-        Text(":")
+            Text(":")
             Text(String(counter % 3600 % 60))
                 .foregroundColor(.white)
         }

@@ -12,12 +12,12 @@ import SwiftUI
 
 
 
-enum AppState {
+enum WalkState {
     
     case readyToStart
     case walkingAway
-    case walking
-    case doneWalking
+    case inProgress
+    case complete
 }
 
 enum BallTypes {
@@ -33,14 +33,14 @@ class ReflectionViewModel : ObservableObject {
     
     let locationManager = ReflectionLocationManager()
     @Published var distanceFromStart = CLLocationDistance()
-    @Published var state: AppState = .readyToStart
+    @Published var state: WalkState = .readyToStart
     
     //distance limit that activates the counter
     var limit: Double = 100.00
     //how long in seconds the timer goes
     var seconds: Double = 1500
     //Counter that is reduce by one second after the person is walking away.
-    var counter: Int = 1500
+    var secondsRemaining: Int = 1500
     
     @Published var percentFromStart: CGFloat = 0.0
     @Published var percentOfTimeWalking: CGFloat = 0.0
@@ -158,7 +158,7 @@ class ReflectionViewModel : ObservableObject {
                 
                 self?.distanceFromStart = distance
                 
-                if self?.state != .walking || self?.state != .doneWalking {
+                if self?.state != .inProgress || self?.state != .complete {
                     
                     self?.checkIfWalking()
 
@@ -171,7 +171,7 @@ class ReflectionViewModel : ObservableObject {
     
     func checkIfWalking() {
         if Double(distanceFromStart) > limit {
-            state = .walking
+            state = .inProgress
             locationManager.stopLoadingLocations()
         } else {
             percentFromStart = distanceFromStart/limit
@@ -182,9 +182,9 @@ class ReflectionViewModel : ObservableObject {
      
         
      
-        if counter < 1 {
+        if secondsRemaining < 1 {
            
-            state = .doneWalking
+            state = .complete
             storage.addReflection()
             self.getEntities()
             NotificationCenter.default.post(name: self.blueName, object: nil)
@@ -192,12 +192,12 @@ class ReflectionViewModel : ObservableObject {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.state = .readyToStart
-                self.counter = 10
+                self.secondsRemaining = 10
             }
             
         } else {
-            counter -= 1
-            percentOfTimeWalking = CGFloat(Double(counter)/seconds)
+            secondsRemaining -= 1
+            percentOfTimeWalking = CGFloat(Double(secondsRemaining)/seconds)
         }
     }
     

@@ -8,21 +8,12 @@
 import SwiftUI
 import SpriteKit
 
-struct Reflection: View {
+struct WalkTimerView: View {
     
-    var dateFormateter : DateFormatter {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
-    }
+    let dateFormatter = DateFormatter(timeStyle: .short)
     
-    @StateObject private var vm: ReflectionViewModel
-    
-    init(storage: StorageViewModel) {
-        
-        _vm =  StateObject(wrappedValue: ReflectionViewModel(storage: storage))
-       
-    }
+    //@StateObject private var vm: ReflectionViewModel
+    @ObservedObject var walk: ReflectionViewModel
     
     var scene: SKScene {
         let scene = GameScene()
@@ -37,101 +28,101 @@ struct Reflection: View {
     var body: some View {
         
         GeometryReader { geo in
-         
+            
             ZStack {
                 
                 SpriteView(scene: scene)
                     .frame(width: geo.size.width, height: geo.size.height)
-                    
-
-                startButton
                 
+                
+//                WalkButton(state: walk.state){
+//                    if walk.state == .readyToStart {
+//                        walk.start()
+//                    }
+//                }
+                startButton
                 
                 VStack {
                     
-                Spacer()
-                    if vm.state == .walking {
+                    Spacer()
+                    if walk.state == .inProgress {
                         ZStack {
                             RoundedRectangle(cornerRadius: 25)
                                 .frame(width: 140, height: 60)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .foregroundColor(.gray)
-                            TimerView(counter: vm.counter)
+                            TimerView(counter: walk.secondsRemaining)
                         }
                     }
-                
+                    
                 }
                 
-              
+                
             }
         }
-          
-            
-            
-        .onReceive(timer) { _ in
-            
-            
-            if vm.state == .walking {
-                vm.reduceCounter()
-            }
-            
         
+        
+        
+        .onReceive(timer) { _ in
+            if walk.state == .inProgress {
+                walk.reduceCounter()
+            }
         }
     }
 }
 
 
-extension Reflection {
-   
+extension WalkTimerView {
+    
     
     private var startButton: some View {
-       
+        
         
         Button {
             
-            if vm.state == .readyToStart {
-            vm.getCurrentLocation()
+            if walk.state == .readyToStart {
+                walk.getCurrentLocation()
             }
             
         } label: {
             ZStack {
                 
-                switch vm.state {
+                switch walk.state {
                     
                 case .readyToStart:
-                  
+                    
                     ButtonView(text: "Ready?", color: .blue)
                     
                 case .walkingAway:
                     
                     ZStack{
-                        ProgressCircle(color: .orange, completion: vm.percentFromStart)
+                        ProgressCircle(color: .orange, completion: walk.percentFromStart)
                         ButtonView(text: "Step Away", color: .yellow)
                     }
                     
                     
-                case .walking:
+                case .inProgress:
                     
                     VStack{
                         ZStack {
-                        ProgressCircle(color: .blue, completion: vm.percentOfTimeWalking)
-                        ButtonView(text: "Walking", color: .green)
+                            ProgressCircle(color: .blue, completion: walk.percentOfTimeWalking)
+                            ButtonView(text: "Walking", color: .green)
                         }
                         
-                      
+                        
                         
                         
                     }
                     
                     
                     
-                case .doneWalking:
-                   
+                case .complete:
+                    
                     ButtonView(text: "Done", color: .blue)
                     
                 }
                 
-            
+                
                 
             }
         }
